@@ -32,7 +32,7 @@ public class Utility {
                     JSONObject provinceObject = allProvinces.getJSONObject(i);
 
                     Province province =  new Province();
-
+                    //保存到数据库
                     province.setProvinceName(provinceObject.getString("name"));
                     province.setProvinceCode(provinceObject.getInt("id"));
                     province.save();
@@ -65,6 +65,7 @@ public class Utility {
                     JSONObject cityObject = allCities.getJSONObject(i);
 
                     City city = new City();
+                    //保存到数据库
                     city.setCityName(cityObject.getString("name"));
                     city.setCityCode(cityObject.getInt("id"));
                     city.setProvinceId(provinceId);
@@ -98,6 +99,7 @@ public class Utility {
                     JSONObject countyObject = allCounties.getJSONObject(i);
 
                     County county = new County();
+                    //保存到数据库
                     county.setCountyName(countyObject.getString("name"));
                     county.setWeatherId(countyObject.getString("weather_id"));
                     county.setCityId(cityId);
