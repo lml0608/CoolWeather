@@ -12,7 +12,7 @@ public class Now {
     public String temperatrue;
 
     @SerializedName("cond")
-    public More More;
+    public More more;
 
     public class More{
 
