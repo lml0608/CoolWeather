@@ -1,7 +1,6 @@
 package com.coolweather.android;
 
 import android.app.ProgressDialog;
-import android.content.pm.ProviderInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -24,10 +23,9 @@ import com.coolweather.android.util.Utility;
 import org.litepal.crud.DataSupport;
 
 import java.io.IOException;
-import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.RunnableFuture;
+
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -92,12 +90,14 @@ public class ChooseAreaFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 if (currentLevel == LEVEL_PROVINCE) {
-
+                    //当前被选中省
                     selectedProvince = mProvinceList.get(position);
+                    //获取被选中的省包含的市的数据
                     queryCities();
                 } else if (currentLevel == LEVEL_CITY) {
-
+                    //当前被选中的市
                     selectedCity = mCityList.get(position);
+                    //获取被选中的市包含的县的数据
                     queryCounties();
                 }
             }
