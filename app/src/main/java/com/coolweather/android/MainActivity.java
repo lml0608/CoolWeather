@@ -6,6 +6,8 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.coolweather.android.util.SpUtil;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -13,10 +15,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(this);
+//        SharedPreferences prefs = PreferenceManager
+//                .getDefaultSharedPreferences(this);
+//
+//        SpUtil.getStoredWeather(this);
 
-        if (prefs.getString("weather", null) != null) {
+        if (SpUtil.getStoredWeather(this) != null) {
 
             Intent intent = new Intent(this, WeatherActivity.class);
             startActivity(intent);

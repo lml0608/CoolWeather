@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.coolweather.android.gson.Forecast;
 import com.coolweather.android.gson.Weather;
 import com.coolweather.android.util.HttpUtil;
+import com.coolweather.android.util.SpUtil;
 import com.coolweather.android.util.Utility;
 
 import java.io.IOException;
@@ -44,9 +45,11 @@ public class WeatherActivity extends AppCompatActivity {
 
         initUI();
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+//        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+//
+//        String weatherString = prefs.getString("weather", "");
 
-        String weatherString = prefs.getString("weather", "");
+        String weatherString = SpUtil.getStoredWeather(getApplicationContext());
 
         if (!TextUtils.isEmpty(weatherString)) {
             Weather weather = Utility.handleWeatherResponse(weatherString);
@@ -90,11 +93,14 @@ public class WeatherActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         if (weather != null && "ok".equals(weather.status)) {
-                            SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
-                                    .edit();
+//                            SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
+//                                    .edit();
+//
+//                            editor.putString("weather", responseText);
+//                            editor.commit();
 
-                            editor.putString("weather", responseText);
-                            editor.commit();
+                            SpUtil.setStoredWeather(getApplicationContext(), responseText);
+
                             showWeatherInfo(weather);
                         }else {
                             Toast.makeText(getApplicationContext(),"获取天气信息失败", Toast.LENGTH_SHORT).show();
