@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
 //        SharedPreferences prefs = PreferenceManager
 //                .getDefaultSharedPreferences(this);
 //
-//        SpUtil.getStoredWeather(this);
 
         if (SpUtil.getStoredWeather(this) != null) {
 
